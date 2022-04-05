@@ -1,0 +1,420 @@
+{	"setup":{
+	"autopilot": {},
+	"gazebo": {
+		"gazebo_models": {
+			"gazebo_model_repo_0":{
+				"repo": "git@github.com:rudislabs/nxp_gazebo.git",
+				"version": "aim",
+				"name": "nxp_gazebo"
+			},
+			"gazebo_model_repo_1":{
+				"repo": "git@github.com:osrf/gazebo_models.git",
+				"version": "master",
+				"name": "osrf/models"
+			}
+		},
+		"gazebo_plugins": {}
+	},
+	"ros2": {
+		"ros2_repo_0":{
+			"repo": "git@github.com:rudislabs/nxp_cup_interfaces.git",
+			"version": "aim",
+			"build_package": "nxp_cup_interfaces",
+			"build_prefix": "--packages-select",
+			"build_postfix": "--symlink-install"
+		},
+		"ros2_repo_1":{
+			"repo": "git@github.com:rudislabs/nxp_cup_vision.git",
+			"version": "aim",
+			"build_package": "nxp_cup_vision",
+			"build_prefix": "--packages-select",
+			"build_postfix": "--symlink-install"
+		},
+		"ros2_repo_2":{
+			"repo": "git@github.com:rudislabs/aim_line_follow.git",
+			"version": "main",
+			"build_package": "aim_line_follow",
+			"build_prefix": "--packages-select",
+			"build_postfix": "--symlink-install"
+		}
+	},
+	"system": {
+		"set_environment": {
+			"environment_0": {
+				"variable": "GAZEBO_MODEL_DATABASE_URI",
+				"value": "",
+				"method": "overwrite"
+			},
+			"environment_1": {
+				"variable": "GAZEBO_RESOURCE_PATH",
+				"value": "/usr/share/gazebo-11",
+				"method": "prepend"
+			},
+			"environment_2": {
+				"variable": "GAZEBO_PLUGIN_PATH",
+				"value": "/opt/ros/foxy/lib",
+				"method": "prepend"
+			}
+		}
+	}
+},
+"verbose": {
+	"gzclient": true,
+	"gzserver": true
+},
+"nodes": {
+	"ros2_node_0":{
+		"timing": "post-spawn",
+		"package": "nxp_cup_vision",
+		"executable": "nxp_track_vision",
+		"name": "nxp_track_vision_0",
+		"output": "screen",
+		"parameters": [	{"pyramid_down": 3},
+						{"camera_image": "trackImage0"},
+						{"debug_image": "debugImage0"},
+						{"namespace": "cupcar0"},
+						{"mask_ratio_array": [1.0, 0.4]}
+
+					]
+	},
+	"ros2_node_1":{
+		"timing": "post-spawn",
+		"package": "rqt_image_view",
+		"executable": "rqt_image_view",
+		"name": "rqt_image_view_0",
+		"output": "screen",
+		"parameters": []
+	},
+	"ros2_node_2":{
+		"timing": "post-spawn",
+		"package": "aim_line_follow",
+		"executable": "line_follower",
+		"name": "line_follower_0",
+		"output": "screen",
+		"parameters": []
+	}
+},
+"world_params": {
+	"gazebo_name": "nxp_gazebo",
+	"generate_world": 1,
+	"generate_params":{
+		"world_name": "canvas",
+		"sdf_version": "1.6",
+		"use_spherical_coords": 1,
+		"lat_lon_alt": [28.6139, -77.2090, 100],
+		"sun_model": "sunUTC",
+		"sun_utc_date": "now",
+		"ambient_light": 0.5,
+		"background_light": 0.15,
+		"shadows": 0,
+		"cloud_speed": 12,
+		"wind_speed": "NotSet",
+		"embedded_models": {
+			"embed_model_0": {
+				"model": "nxp_raceway_2",
+				"name": "nxp_raceway_overpass_0",
+				"pose": "-2 -0.35 -0.04 0 0 0"
+			},
+			"embed_model_1": {
+				"model": "start_point",
+				"name": "start_point_0",
+				"pose": "0.2 -0.412042 0.09 0 0 0"
+			},
+			"embed_model_2": {
+				"model": "start_point",
+				"name": "start_point_1",
+				"pose": "0.2 0.624883 0.09 0 0 0"
+			},
+			
+			
+			"embed_model_3": {
+				"model": "go_straight_sign",
+				"name": "sign_1",
+				"pose": "5.393145 4.020703 0.115537 0 0 0.115537"
+			},
+			"embed_model_3_2": {
+				"model": "go_straight_sign",
+				"name": "sign_1_2",
+				"pose": "4.362000 3.146068 0.115537 0 0 -1.639133"
+			},
+			"embed_model_4_2": {
+				"model": "go_straight_sign",
+				"name": "sign_1_3",
+				"pose": "4.453080 4.020703 0.115537 0 0 0.008266"
+			},
+			"embed_model_4": {
+				"model": "go_straight_sign",
+				"name": "sign_2",
+				"pose": "5.326705 3.146068 0.115537 0 0 -1.639132"
+			},
+			"embed_model_5": {
+				"model": "stop_traffic_sign",
+				"name": "stop",
+				"pose": "-0.171723 0.467679 0.123072 0 0 -2.549039"
+			},
+			"embed_model_6": {
+				"model": "oak_tree_mini",
+				"name": "tree",
+				"pose": "-0.022398 3.645584 0 0 0 0"
+			},
+			"embed_model_7": {
+				"model": "barricade",
+				"name": "barricade_1",
+				"pose": "3.519024 0.370385 0.031807 0 0 1.539841"
+			},
+			"embed_model_8": {
+				"model": "barricade",
+				"name": "barricade_2",
+				"pose": "4.629605 0.337417 0.031807 0 0 1.539841"
+			},
+			"embed_model_9": {
+				"model": "barricade",
+				"name": "barricade_3",
+				"pose": "4.026354 -0.119128 0.031807 0 0 1.539841"
+			},
+			
+			"embed_model_10": {
+				"model": "finish_line",
+				"name": "finish",
+				"pose": "-0.397272 0.101526 0.005 0 0 0"
+			},
+			"embed_model_11": {
+				"model": "fire_hydrant2",
+				"name": "hydrant",
+				"pose": "3.802256 5.606606 -0.010970 0 0 0"
+			},
+			
+			"embed_model_12": {
+				"model": "traffic_light_red",
+				"name": "traffic_light",
+				"pose": "0.607803 2.528717 0.224218 0 0 1.612265"
+			},
+			"embed_model_13": {
+				"model": "start_sign",
+				"name": "start",
+				"pose": "0.581745 0.585257 0.150951 0 0 -2.196015"
+			},
+			"embed_model_14": {
+				"model": "zebra_line",
+				"name": "crossing",
+				"pose": "0.791940 2.817986 0.005 0 0 1.583922"
+			},
+			"embed_model_15": {
+				"model": "Construction_Cone_mini",
+				"name": "cone_1",
+				"pose": "2.809120 6.325607 0 0 0 0"
+			},
+			"embed_model_16": {
+				"model": "Construction_Cone_mini",
+				"name": "cone_2",
+				"pose": "2.380310 5.979408 0 0 0 0"
+			},
+			"embed_model_17": {
+				"model": "Construction_Cone_mini",
+				"name": "cone_3",
+				"pose": "2.085986 6.369958 0 0 0 0"
+			},
+			"embed_model_18": {
+				"model": "Construction_Cone_mini",
+				"name": "cone_4",
+				"pose": "1.594360 6.066912 0 0 0 0"
+			},
+			"embed_model_19": {
+				"model": "Construction_Cone_mini",
+				"name": "cone_5",
+				"pose": "1.281032 6.461282 0 0 0 0"
+			},
+			"embed_model_20": {
+				"model": "Construction_Cone_mini",
+				"name": "cone_6",
+				"pose": "0.969555 6.281930 0 0 0 0"
+			},
+			"embed_model_21": {
+				"model": "Construction_Cone_mini",
+				"name": "cone_7",
+				"pose": "0.702190 6.283780 0 0 0 0"
+			},
+			"embed_model_121": {
+				"model": "Construction_Cone_mini",
+				"name": "cone_8",
+				"pose": "0.505347 6.293800 0 0 0 0"
+			},
+			"embed_model_122": {
+				"model": "Construction_Cone_mini",
+				"name": "cone_9",
+				"pose": "0.219255 6.323270 0 0 0 0"
+			},
+			"embed_model_22": {
+				"model": "car_blue",
+				"name": "car",
+				"pose": "4.023540 3.360870 0 0 0 0"
+			},
+			"embed_model_23": {
+				"model": "ambulance_mini",
+				"name": "ambulance",
+				"pose": "5.113203 1.033241 0 0 0 0"
+			},
+			"embed_model_24": {
+				"model": "person_1",
+				"name": "human_1",
+				"pose": "5.977067 3.331223 0.018875 0 0 0"
+			},
+			"embed_model_25": {
+				"model": "person_1",
+				"name": "human_2",
+				"pose": "-0.181879 3.624502 0.018875 0 0 0"
+			},
+			"embed_model_26": {
+				"model": "car_blue",
+				"name": "car_2",
+				"pose": "5.660480 1.750110 0 0 0 0"
+			},
+			"embed_model_27": {
+				"model": "car_blue",
+				"name": "car3",
+				"pose": "-0.678559 1.046210 0 0 0 0"
+			},
+			
+			"embed_model_29": {
+				"model": "House_mini",
+				"name": "House",
+				"pose": "1.974880 7.335330 0 0 0 0"
+			},
+			"embed_model_30": {
+				"model": "Gas_Station2",
+				"name": "Gas",
+				"pose": "-1.845610 7.125460 0 0 0 0"
+			},
+			"embed_model_31": {
+				"model": "fire_hydrant2",
+				"name": "hydrant2",
+				"pose": "6.010590 5.201580 -0.010970 0 0 0"
+			},
+			"embed_model_32": {
+				"model": "postbox2",
+				"name": "postBox",
+				"pose": "6.519100 0.839805 0 0 0 0"
+			},
+			"embed_model_78": {
+				"model": "car_red",
+				"name": "carR1",
+				"pose": "6.414818 5.441097 0 0 0 -1.618830"
+			},
+			"embed_model_79": {
+				"model": "car_red",
+				"name": "carR2",
+				"pose": "5.788100 4.555100 0 0 0 -1.618830"
+			},
+
+			
+			"embed_model_83": {
+				"model": "car_red",
+				"name": "carR5",
+				"pose": "2.810439 6.859539 0 0 0 -1.618830"
+			},
+			
+			"embed_model_85": {
+				"model": "car_red",
+				"name": "carR7",
+				"pose": "1.096310 3.095540 0 0 0 -1.618830"
+			},
+			"embed_model_86": {
+				"model": "car_red",
+				"name": "carR8",
+				"pose": "-1.988810 0.525863 0 0 0 -1.618830"
+			},
+			"embed_model_87": {
+				"model": "person_1",
+				"name": "human_3",
+				"pose": "-1.168350 1.806360 0.018875 0 0 0"
+			},
+			"embed_model_88": {
+				"model": "person_1",
+				"name": "human_4",
+				"pose": "-1.139000 1.855270 0.018875 0 0 0"
+			},
+			"embed_model_89": {
+				"model": "person_1",
+				"name": "human_5",
+				"pose": "-1.215800 1.788310 0.018875 0 0 0"
+			},
+			"embed_model_90": {
+				"model": "person_2",
+				"name": "human_6",
+				"pose": "6.522360 0.779531 0 0 0 0"
+			},
+			"embed_model_91": {
+				"model": "person_2",
+				"name": "human_7",
+				"pose": "6.526480 0.967919 0 0 0 0"
+			},
+			"embed_model_92": {
+				"model": "person_2",
+				"name": "human_8",
+				"pose": "4.133160 3.937220 0 0 0 0"
+			},
+			"embed_model_93": {
+				"model": "person_2",
+				"name": "human_9",
+				"pose": "1.667960 6.658910 0 0 0 0"
+			},
+			"embed_model_94": {
+				"model": "person_2",
+				"name": "human_10",
+				"pose": "3.418250 6.659500 0 0 0 0"
+			},
+			"embed_model_95": {
+				"model": "dumpster2",
+				"name": "dumpster_1",
+				"pose": "2.538630 3.949870 0 0 0 -1.530784"
+			},
+			"embed_model_96": {
+				"model": "dumpster2",
+				"name": "dumpster_2",
+				"pose": "2.520450 4.454570 0 0 0 -1.530784"
+			},
+			"embed_model_97": {
+				"model": "dumpster2",
+				"name": "dumpster_3",
+				"pose": "2.520450 4.200470 0 0 0 -1.530784"
+			},
+			"embed_model_98": {
+				"model": "banner_1",
+				"name": "aim_logo",
+				"pose": "2.845850 1.843385 0.010527 0 0 1.578610"
+			},
+			"embed_model_99": {
+				"model": "banner_2",
+				"name": "ros_logo",
+				"pose": "1.315040 4.884328 0.010527 0 0 1.552519"
+			}
+			
+			
+
+		
+		},
+		"video_widget": "NotSet",
+		"set_physics": 0,
+		"update_rate": 100,
+		"realtime_factor": 1.0,
+		"ode_threads": 2
+	}
+},
+"models": {
+	"model_params_0": {
+		"gazebo_name": "nxp_gazebo",
+		"spawn_pose": [0, 0, 0.1, 0, 0, 0],
+		"instance": 0,
+		"generate_params":{
+			"controller": "ros2",
+			"base_model": "nxp_cupcar",
+			"sdf_version": 1.6,
+			"camera_image": "trackImage0",
+			"namespace": "cupcar0",
+			"model_name": "NotSet",
+			"hq_wheel": "0",
+			"hq_frame": "0"
+		}
+	}
+}
+}
