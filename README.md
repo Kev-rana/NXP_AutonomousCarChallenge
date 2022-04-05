@@ -1,5 +1,6 @@
 # NXP_AutonomousCarChallenge
-This was a code I and my colleague developed for the NXP Autonomous cup competetion '22. The Implementation is on ROS@ Foxy , and the CNN model was trained on Google Collab
+This was a code I and my colleague developed for the NXP Autonomous cup competetion '22. 
+The Implementation is on ROS2 Foxy , and the CNN model was trained on Google Collab
 
 Round 1:
 The ROS framework is used to facilitate communications between the different nodes(sensors and actuators) in an autonomous car. In this project, a simulated Pixy camera sensor was used to read the images and send to the ROS framework for processing. The Open CV library works on the subscribed images of the road and defines two(or one) vector(s) that are the 2 lanes of the road. These two vectors are stored and published via ROS messages to the subscriber node/script that performs the lane keeping function. The variables that are adjusted by the line follower node inorder to navigate the car are the linear velocity and angular/ steer velocity.
